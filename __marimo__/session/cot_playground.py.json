@@ -1,0 +1,195 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.17.7"
+  },
+  "cells": [
+    {
+      "id": "setup",
+      "code_hash": "2249e9234280253a9c3215395b632afd",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "interruption",
+          "evalue": "This cell was interrupted and needs to be re-run",
+          "traceback": []
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "'(ReadTimeoutError(\"HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)\"), '(Request ID: db9edbe7-3464-4a39-be07-2bca3c369c7f)')' thrown while requesting HEAD https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B/resolve/main/tokenizer_config.json\nRetrying in 1s [Retry 1/5].\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\rFetching 2 files:   0%|                                                                         | 0/2 [00:00<?, ?it/s]",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\rFetching 2 files:   0%|                                                                         | 0/2 [00:06<?, ?it/s]\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Cancellation requested; stopping current tasks.\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/var/folders/r6/h1w8n5h90xd3p69c_6n6t8500000gn/T/marimo_19128/__marimo__cell_setup_.py&quot;</span>, line <span class=\"m\">12</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">model</span> <span class=\"o\">=</span> <span class=\"n\">AutoModelForCausalLM</span><span class=\"o\">.</span><span class=\"n\">from_pretrained</span><span class=\"p\">(</span>\n<span class=\"w\">    </span>    <span class=\"n\">model_name</span><span class=\"p\">,</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">2</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">trust_remote_code</span><span class=\"o\">=</span><span class=\"kc\">False</span><span class=\"p\">,</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/models/auto/auto_factory.py&quot;</span>, line <span class=\"m\">604</span>, in <span class=\"n\">from_pretrained</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">model_class</span><span class=\"o\">.</span><span class=\"n\">from_pretrained</span><span class=\"p\">(</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"n\">pretrained_model_name_or_path</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">model_args</span><span class=\"p\">,</span> <span class=\"n\">config</span><span class=\"o\">=</span><span class=\"n\">config</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">hub_kwargs</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/modeling_utils.py&quot;</span>, line <span class=\"m\">277</span>, in <span class=\"n\">_wrapper</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">func</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/modeling_utils.py&quot;</span>, line <span class=\"m\">4900</span>, in <span class=\"n\">from_pretrained</span>\n<span class=\"w\">    </span><span class=\"n\">checkpoint_files</span><span class=\"p\">,</span> <span class=\"n\">sharded_metadata</span> <span class=\"o\">=</span> <span class=\"n\">_get_resolved_checkpoint_files</span><span class=\"p\">(</span>\n<span class=\"w\">                                         </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"n\">pretrained_model_name_or_path</span><span class=\"o\">=</span><span class=\"n\">pretrained_model_name_or_path</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">15</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">transformers_explicit_filename</span><span class=\"o\">=</span><span class=\"n\">transformers_explicit_filename</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/modeling_utils.py&quot;</span>, line <span class=\"m\">1200</span>, in <span class=\"n\">_get_resolved_checkpoint_files</span>\n<span class=\"w\">    </span><span class=\"n\">checkpoint_files</span><span class=\"p\">,</span> <span class=\"n\">sharded_metadata</span> <span class=\"o\">=</span> <span class=\"n\">get_checkpoint_shard_files</span><span class=\"p\">(</span>\n<span class=\"w\">                                         </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"n\">pretrained_model_name_or_path</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">9</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">_commit_hash</span><span class=\"o\">=</span><span class=\"n\">commit_hash</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/utils/hub.py&quot;</span>, line <span class=\"m\">1084</span>, in <span class=\"n\">get_checkpoint_shard_files</span>\n<span class=\"w\">    </span><span class=\"n\">cached_filenames</span> <span class=\"o\">=</span> <span class=\"n\">cached_files</span><span class=\"p\">(</span>\n<span class=\"w\">    </span>    <span class=\"n\">pretrained_model_name_or_path</span><span class=\"p\">,</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">10</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">_commit_hash</span><span class=\"o\">=</span><span class=\"n\">_commit_hash</span><span class=\"p\">,</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/utils/hub.py&quot;</span>, line <span class=\"m\">494</span>, in <span class=\"n\">cached_files</span>\n<span class=\"w\">    </span><span class=\"n\">snapshot_download</span><span class=\"p\">(</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"n\">path_or_repo_id</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">9</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">local_files_only</span><span class=\"o\">=</span><span class=\"n\">local_files_only</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/huggingface_hub/utils/_validators.py&quot;</span>, line <span class=\"m\">114</span>, in <span class=\"n\">_inner_fn</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">fn</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/huggingface_hub/_snapshot_download.py&quot;</span>, line <span class=\"m\">332</span>, in <span class=\"n\">snapshot_download</span>\n<span class=\"w\">    </span><span class=\"n\">thread_map</span><span class=\"p\">(</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~^</span>\n<span class=\"w\">    </span>    <span class=\"n\">_inner_hf_hub_download</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">4</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span>    <span class=\"n\">tqdm_class</span><span class=\"o\">=</span><span class=\"n\">tqdm_class</span> <span class=\"ow\">or</span> <span class=\"n\">hf_tqdm</span><span class=\"p\">,</span>\n<span class=\"w\">        </span><span class=\"pm\">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">^</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/tqdm/contrib/concurrent.py&quot;</span>, line <span class=\"m\">69</span>, in <span class=\"n\">thread_map</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">_executor_map</span><span class=\"p\">(</span><span class=\"n\">ThreadPoolExecutor</span><span class=\"p\">,</span> <span class=\"n\">fn</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">iterables</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">tqdm_kwargs</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/tqdm/contrib/concurrent.py&quot;</span>, line <span class=\"m\">51</span>, in <span class=\"n\">_executor_map</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"n\">tqdm_class</span><span class=\"p\">(</span><span class=\"n\">ex</span><span class=\"o\">.</span><span class=\"n\">map</span><span class=\"p\">(</span><span class=\"n\">fn</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">iterables</span><span class=\"p\">,</span> <span class=\"n\">chunksize</span><span class=\"o\">=</span><span class=\"n\">chunksize</span><span class=\"p\">),</span> <span class=\"o\">**</span><span class=\"n\">kwargs</span><span class=\"p\">))</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/tqdm/std.py&quot;</span>, line <span class=\"m\">1181</span>, in <span class=\"n\">__iter__</span>\n<span class=\"w\">    </span><span class=\"k\">for</span> <span class=\"n\">obj</span> <span class=\"ow\">in</span> <span class=\"n\">iterable</span><span class=\"p\">:</span>\n<span class=\"w\">               </span><span class=\"pm\">^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/concurrent/futures/_base.py&quot;</span>, line <span class=\"m\">619</span>, in <span class=\"n\">result_iterator</span>\n<span class=\"w\">    </span><span class=\"k\">yield</span> <span class=\"n\">_result_or_cancel</span><span class=\"p\">(</span><span class=\"n\">fs</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">())</span>\n<span class=\"w\">          </span><span class=\"pm\">~~~~~~~~~~~~~~~~~^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/concurrent/futures/_base.py&quot;</span>, line <span class=\"m\">317</span>, in <span class=\"n\">_result_or_cancel</span>\n<span class=\"w\">    </span><span class=\"k\">return</span> <span class=\"n\">fut</span><span class=\"o\">.</span><span class=\"n\">result</span><span class=\"p\">(</span><span class=\"n\">timeout</span><span class=\"p\">)</span>\n<span class=\"w\">           </span><span class=\"pm\">~~~~~~~~~~^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/concurrent/futures/_base.py&quot;</span>, line <span class=\"m\">451</span>, in <span class=\"n\">result</span>\n<span class=\"w\">    </span><span class=\"bp\">self</span><span class=\"o\">.</span><span class=\"n\">_condition</span><span class=\"o\">.</span><span class=\"n\">wait</span><span class=\"p\">(</span><span class=\"n\">timeout</span><span class=\"p\">)</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~~~~~~~~~~^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/threading.py&quot;</span>, line <span class=\"m\">359</span>, in <span class=\"n\">wait</span>\n<span class=\"w\">    </span><span class=\"n\">waiter</span><span class=\"o\">.</span><span class=\"n\">acquire</span><span class=\"p\">()</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~~~~^^</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/marimo/_runtime/handlers.py&quot;</span>, line <span class=\"m\">48</span>, in <span class=\"n\">interrupt_handler</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"n\">MarimoInterrupt</span>\n<span class=\"gr\">KeyboardInterrupt</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "9a8bd0f95a4cc91d0f337f0d3fb5ca79",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "0c83b129b164baffb56a30db9d5a7014",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "0a0195309b8b9f46043eb2331428fca1",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "380b7397fbb6bc7e3d8fe21829d55835",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "f2fe90a9afba6986498e43b5d3b7042d",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "5ab91db79e9959f7503dcfe834f3e19f",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "a23b18e6e151b329a8196e7d6dfb4c9c",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "10d10e02fd98c86e5fa6ae763245ddbb",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "7167a8e888f6b52de99ee8219edfa8a5",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "802a7fa917b4500467bc19dc1b7f9fda",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": null,
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
