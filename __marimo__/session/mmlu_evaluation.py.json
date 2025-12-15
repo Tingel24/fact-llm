@@ -9,48 +9,18 @@
       "code_hash": "8193c77b0a97786fec43b39b059f00a0",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "interruption",
+          "evalue": "This cell was interrupted and needs to be re-run",
+          "traceback": []
         }
       ],
       "console": [
         {
           "type": "stream",
           "name": "stderr",
-          "text": "\rLoading checkpoint shards:   0%|                                                                          | 0/5 [00:00<?, ?it/s]",
-          "mimetype": "text/plain"
-        },
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "\rLoading checkpoint shards:  20%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f                                                    | 1/5 [00:05<00:21,  5.47s/it]",
-          "mimetype": "text/plain"
-        },
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "\rLoading checkpoint shards:  40%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258d                                       | 2/5 [00:07<00:10,  3.45s/it]",
-          "mimetype": "text/plain"
-        },
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "\rLoading checkpoint shards:  60%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c                          | 3/5 [00:09<00:05,  2.81s/it]",
-          "mimetype": "text/plain"
-        },
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "\rLoading checkpoint shards:  80%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a             | 4/5 [00:11<00:02,  2.34s/it]",
-          "mimetype": "text/plain"
-        },
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "\rLoading checkpoint shards: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:11<00:00,  1.72s/it]\rLoading checkpoint shards: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 5/5 [00:11<00:00,  2.36s/it]\n",
-          "mimetype": "text/plain"
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/var/folders/r6/h1w8n5h90xd3p69c_6n6t8500000gn/T/marimo_57709/__marimo__cell_Hbol_.py&quot;</span>, line <span class=\"m\">2</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">transformers</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">AutoModelForCausalLM</span><span class=\"p\">,</span> <span class=\"n\">AutoTokenizer</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">1360</span>, in <span class=\"n\">_find_and_load</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">1331</span>, in <span class=\"n\">_find_and_load_unlocked</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">935</span>, in <span class=\"n\">_load_unlocked</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/marimo/_output/formatters/formatters.py&quot;</span>, line <span class=\"m\">147</span>, in <span class=\"n\">exec_module</span>\n<span class=\"w\">    </span><span class=\"n\">loader_return_value</span> <span class=\"o\">=</span> <span class=\"n\">original_exec_module</span><span class=\"p\">(</span><span class=\"n\">module</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/__init__.py&quot;</span>, line <span class=\"m\">27</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">.</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">dependency_versions_check</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/dependency_versions_check.py&quot;</span>, line <span class=\"m\">16</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">.utils.versions</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">require_version</span><span class=\"p\">,</span> <span class=\"n\">require_version_core</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/utils/__init__.py&quot;</span>, line <span class=\"m\">24</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">.auto_docstring</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"p\">(</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">10</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/utils/auto_docstring.py&quot;</span>, line <span class=\"m\">30</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">.generic</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">ModelOutput</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/transformers/utils/generic.py&quot;</span>, line <span class=\"m\">51</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">import</span><span class=\"w\"> </span><span class=\"nn\">torch</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/torch/__init__.py&quot;</span>, line <span class=\"m\">2204</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">torch</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"p\">(</span>\n<span class=\"w\">    </span><span class=\"o\">...&lt;</span><span class=\"mi\">30</span> <span class=\"n\">lines</span><span class=\"o\">&gt;...</span>\n<span class=\"w\">    </span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/torch/distributions/__init__.py&quot;</span>, line <span class=\"m\">81</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">.constraint_registry</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">biject_to</span><span class=\"p\">,</span> <span class=\"n\">transform_to</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">1360</span>, in <span class=\"n\">_find_and_load</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">1322</span>, in <span class=\"n\">_find_and_load_unlocked</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">1262</span>, in <span class=\"n\">_find_spec</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/marimo/_output/formatters/formatters.py&quot;</span>, line <span class=\"m\">123</span>, in <span class=\"n\">find_spec</span>\n<span class=\"w\">    </span><span class=\"n\">spec</span> <span class=\"o\">=</span> <span class=\"n\">original_find_spec</span><span class=\"p\">(</span><span class=\"n\">fullname</span><span class=\"p\">,</span> <span class=\"n\">path</span><span class=\"p\">,</span> <span class=\"n\">target</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">1555</span>, in <span class=\"n\">find_spec</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">1529</span>, in <span class=\"n\">_get_spec</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">1632</span>, in <span class=\"n\">find_spec</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">1675</span>, in <span class=\"n\">_fill_cache</span>\n  File <span class=\"nb\">&quot;/Users/luca/PycharmProjects/fact-llm/.venv/lib/python3.13/site-packages/marimo/_runtime/handlers.py&quot;</span>, line <span class=\"m\">48</span>, in <span class=\"n\">interrupt_handler</span>\n<span class=\"w\">    </span><span class=\"k\">raise</span> <span class=\"n\">MarimoInterrupt</span>\n<span class=\"gr\">KeyboardInterrupt</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
         }
       ]
     },
@@ -59,10 +29,10 @@
       "code_hash": "c2d76598a716cc2e97f9f53dfab917b6",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
         }
       ],
       "console": []
@@ -72,10 +42,10 @@
       "code_hash": "0996fe469b11379131dc2b0227714676",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
         }
       ],
       "console": []
@@ -85,10 +55,10 @@
       "code_hash": "471da77162f5b7e0ba5dedc235039884",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "interruption",
+          "evalue": "This cell was interrupted and needs to be re-run",
+          "traceback": []
         }
       ],
       "console": []
@@ -98,10 +68,10 @@
       "code_hash": "7164e10f4ff117269ad28314b9ee4a53",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "interruption",
+          "evalue": "This cell was interrupted and needs to be re-run",
+          "traceback": []
         }
       ],
       "console": []
@@ -111,10 +81,10 @@
       "code_hash": "f12a250320c5f935b33df1b47c922b01",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
         }
       ],
       "console": [
@@ -131,10 +101,10 @@
       "code_hash": "ee8bac4f216e9074730a36307bccee04",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
         }
       ],
       "console": []
@@ -144,10 +114,10 @@
       "code_hash": "54e5715e04931e918aaa36cde8f2f699",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"question\">Question</h2>\n<span class=\"paragraph\">In his will, a jockey devised his home \"to my friend to whom I am everlastingly grateful for the devoted care he has lavished on my horses, but if ever my horses who survive me shall fail to receive proper care, then to my beloved daughter and her heirs, if she be living and own any horses, otherwise to the Equestrian Society. \"In an appropriate action to construe the will, the court will determine the friend's interest to be a\nChoices:</span>\n<span class=\"paragraph\">A. fee simple subject to an executory interest.</span>\n<span class=\"paragraph\">B. fee simple determinable.</span>\n<span class=\"paragraph\">C. fee simple subject to condition subsequent.</span>\n<span class=\"paragraph\">D. contingent remainder.</span>\n<h2 id=\"task\">Task</h2>\n<span class=\"paragraph\">Answer the above question with only 1 letter in boxed format (such as \\boxed{A})\nIf you want to refuse to answer the given question, answer with \\boxed{X}</span>\n<h2 id=\"answer\">Answer</h2></span>"
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
         }
       ],
       "console": []
@@ -157,10 +127,10 @@
       "code_hash": "98cd5682105439a954fe939e1d27dcca",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "interruption",
+          "evalue": "This cell was interrupted and needs to be re-run",
+          "traceback": []
         }
       ],
       "console": []
@@ -170,10 +140,10 @@
       "code_hash": "8b4b402f7deb5394417333b5981e8310",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
         }
       ],
       "console": []
@@ -183,10 +153,10 @@
       "code_hash": "76d865190804a3a11f6a767c1c324957",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
         }
       ],
       "console": []
@@ -196,10 +166,10 @@
       "code_hash": "9700180c1b3f539d42fe9b0156e7e16f",
       "outputs": [
         {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
+          "type": "error",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
+          "traceback": []
         }
       ],
       "console": []
@@ -210,8 +180,8 @@
       "outputs": [
         {
           "type": "error",
-          "ename": "interruption",
-          "evalue": "This cell was interrupted and needs to be re-run",
+          "ename": "exception",
+          "evalue": "An ancestor raised an exception (KeyboardInterrupt): ",
           "traceback": []
         }
       ],
