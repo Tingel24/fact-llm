@@ -7,7 +7,7 @@ from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 if __name__ == '__main__':
     # Claude 3.5 Sonnet
     llm = HuggingFaceEndpoint(
-        repo_id="deepseek-ai/DeepSeek-R1-0528",
+        repo_id="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
         task="text-generation",
         max_new_tokens=512,
         do_sample=False,

@@ -1,0 +1,19 @@
+================================================================================
+JobID = 12026549
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu138
+================================================================================
+
+        Edit langchain_faith_shop.py in your browser 📝
+
+        ➜  URL: http://localhost:3000?access_token=o1yJuut5lgWOOkkjqO8alg
+
+[2025-12-16T13:20:00.870] error: *** JOB 12026549 ON ggpu138 CANCELLED AT 2025-12-16T13:20:00 DUE to SIGNAL Terminated ***
+============ Job Information ===================================================
+Submitted: 2025-12-16T13:17:58
+Started: 2025-12-16T13:17:59
+Ended: 2025-12-16T13:20:01
+Elapsed: 3 min, Limit: 120 min, Difference: 117 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 7.50 core-hours
+================================================================================

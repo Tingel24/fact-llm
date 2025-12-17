@@ -1,0 +1,54 @@
+================================================================================
+JobID = 12026635
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu138
+================================================================================
+critical[unparsable-cells]: Notebook contains unparsable code
+ --> /mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/langchain_faith_shop.py:72:0
+  72 | app._unparsable_cell(
+  73 |     r"""
+     |     ^
+  74 |     from langchain_core.messages import HumanMessage, ToolMessage, SystemMessage
+
+critical[multiple-definitions]: Variable 'llm_tools' is defined in multiple cells
+ --> /mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/langchain_faith_shop.py:34:1
+  34 | 
+  35 |     llm_tools = llm.bind_tools(tools)
+     |     ^
+  36 |     return (llm_tools,)
+   ...
+  67 |     tools = [stock_product]
+  68 |     llm_tools = llm.bind_tools(tools)
+     |     ^
+  69 |     return (llm_tools,)
+hint: Variables must be unique across cells. Alternatively, they can be private with an underscore prefix (i.e. `_llm_tools`.)
+
+critical[multiple-definitions]: Variable 'tools' is defined in multiple cells
+ --> /mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/langchain_faith_shop.py:32:1
+  32 |     # Bind tools
+  33 |     tools = []
+     |     ^
+  34 | 
+   ...
+  66 | def _(llm, stock_product):
+  67 |     tools = [stock_product]
+     |     ^
+  68 |     llm_tools = llm.bind_tools(tools)
+hint: Variables must be unique across cells. Alternatively, they can be private with an underscore prefix (i.e. `_tools`.)
+Traceback (most recent call last):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/langchain_faith_shop.py", line 96, in <module>
+    app.run()
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/marimo/_ast/app.py", line 708, in run
+    raise marimo_error from None
+marimo._ast.errors.UnparsableError: The notebook '/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/langchain_faith_shop.py' has cells with syntax errors, so it cannot be initialized:
+ query = \"\"\"Now use the function call to stock the correct wares. No further considerations, just call the function.\"\"\"
+         ^
+unexpected character after line continuation character
+============ Job Information ===================================================
+Submitted: 2025-12-16T13:48:21
+Started: 2025-12-16T13:48:22
+Ended: 2025-12-16T13:49:01
+Elapsed: 1 min, Limit: 120 min, Difference: 119 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 2.50 core-hours
+================================================================================

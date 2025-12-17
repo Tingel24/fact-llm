@@ -1,0 +1,14 @@
+================================================================================
+JobID = 12013958
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu141
+================================================================================
+/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/bin/python: No module named marimo
+============ Job Information ===================================================
+Submitted: 2025-12-15T13:56:38
+Started: 2025-12-15T13:56:41
+Ended: 2025-12-15T13:57:15
+Elapsed: 1 min, Limit: 120 min, Difference: 119 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 2.50 core-hours
+================================================================================
