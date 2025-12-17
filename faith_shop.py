@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     # Bind tools
     tools = []
-    llm_tools = llm.bind_tools(tools)
+    llm_tools = chat_model.bind_tools(tools)
 
     from langchain_core.messages import HumanMessage, ToolMessage, SystemMessage
 
@@ -52,7 +52,7 @@ if __name__ == '__main__':
         print(f"{messages[i].type}: ", messages[i])
 
     tools = [stock_product]
-    llm_tools = llm.bind_tools(tools)
+    llm_tools = chat_model.bind_tools(tools)
 
     query = """Now use the function call to stock the correct wares. No further considerations, just call the function."""
 
