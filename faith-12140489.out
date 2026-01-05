@@ -1,0 +1,95 @@
+================================================================================
+JobID = 12140489
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu147
+================================================================================
+  0%|          | 0/7 [00:00<?, ?it/s]
+  0%|          | 0/5 [00:00<?, ?it/s][A  0%|          | 0/5 [00:00<?, ?it/s]
+  0%|          | 0/7 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 101, in handle_request
+    raise exc
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpcore/_sync/connection.py", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpcore/_backends/sync.py", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/faith_shop.py", line 140, in <module>
+    baseline_ai_msg = model.invoke(messages)
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 398, in invoke
+    self.generate_prompt(
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 1117, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 927, in generate
+    self._generate_with_cache(
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 1221, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/langchain_ollama/chat_models.py", line 1030, in _generate
+    final_chunk = self._chat_stream_with_aggregation(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/langchain_ollama/chat_models.py", line 965, in _chat_stream_with_aggregation
+    for chunk in self._iterate_over_stream(messages, stop, **kwargs):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/langchain_ollama/chat_models.py", line 1054, in _iterate_over_stream
+    for stream_resp in self._create_chat_stream(messages, stop, **kwargs):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/langchain_ollama/chat_models.py", line 952, in _create_chat_stream
+    yield from self._client.chat(**chat_params)
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/ollama/_client.py", line 174, in inner
+    with self._client.stream(*args, **kwargs) as r:
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_client.py", line 868, in stream
+    response = self.send(
+               ^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 111] Connection refused
+============ Job Information ===================================================
+Submitted: 2026-01-05T13:36:52
+Started: 2026-01-05T13:37:36
+Ended: 2026-01-05T13:38:22
+Elapsed: 1 min, Limit: 60 min, Difference: 59 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 2.50 core-hours
+================================================================================

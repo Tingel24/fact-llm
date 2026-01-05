@@ -1,0 +1,17 @@
+================================================================================
+JobID = 12140426
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu147
+================================================================================
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/faith_shop.py", line 10
+    type Message = AIMessage | SystemMessage | HumanMessage | ToolMessage
+         ^^^^^^^
+SyntaxError: invalid syntax
+============ Job Information ===================================================
+Submitted: 2026-01-05T13:25:24
+Started: 2026-01-05T13:25:37
+Ended: 2026-01-05T13:25:41
+Elapsed: 1 min, Limit: 60 min, Difference: 59 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 2.50 core-hours
+================================================================================

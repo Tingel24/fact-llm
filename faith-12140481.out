@@ -1,0 +1,17 @@
+================================================================================
+JobID = 12140481
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu147
+================================================================================
+Traceback (most recent call last):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/faith_shop.py", line 7, in <module>
+    from langchain_ollama import ChatOllama
+ModuleNotFoundError: No module named 'langchain_ollama'
+============ Job Information ===================================================
+Submitted: 2026-01-05T13:31:36
+Started: 2026-01-05T13:31:52
+Ended: 2026-01-05T13:32:03
+Elapsed: 1 min, Limit: 60 min, Difference: 59 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 2.50 core-hours
+================================================================================

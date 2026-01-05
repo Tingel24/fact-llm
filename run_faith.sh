@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=marimo
-#SBATCH --output=marimo-%j.out
+#SBATCH --output=faith-%j.out
 #SBATCH --partition=scc-gpu
 #SBATCH -G A100:1
 #SBATCH --cpus-per-task=8
