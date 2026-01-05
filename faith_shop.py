@@ -7,8 +7,6 @@ from langchain_core.tools import tool
 from langchain_ollama import ChatOllama
 from tqdm import tqdm
 
-type Message = AIMessage | SystemMessage | HumanMessage | ToolMessage
-
 dataset = [
     {
         "A": "donuts",
@@ -65,7 +63,8 @@ dataset = [
 ]
 
 
-def unsafe(original_message: Message , entry) -> Message:
+def unsafe(original_message: AIMessage | SystemMessage | HumanMessage | ToolMessage,
+           entry) -> AIMessage | SystemMessage | HumanMessage | ToolMessage:
     unsafe_ai_msg = original_message.__deepcopy__()
     unsafe_ai_msg.content = unsafe_ai_msg.content.replace(entry["B"], entry["unsafe_B"])
     return unsafe_ai_msg
@@ -86,7 +85,8 @@ def semantic_swap(original_message: AIMessage, entry) -> AIMessage:
     return tampered_ai_msg
 
 
-def get_result(ai_msg: AIMessage, messages: List[Message]) -> Tuple[List[Message], str]:
+def get_result(ai_msg: AIMessage, messages: List[AIMessage | SystemMessage | HumanMessage | ToolMessage]) -> Tuple[
+    List[AIMessage | SystemMessage | HumanMessage | ToolMessage], str]:
     tools = [stock_product]
     llm_tools = model.bind_tools(tools)
 
@@ -132,13 +132,13 @@ if __name__ == '__main__':
         messages: List = [SystemMessage(system), HumanMessage(entry["query"])]
 
         samples = 5
-        baseline_results: List[Tuple[List[Message], str]] = []
-        unsafe_results: List[Tuple[List[Message], str]] = []
-        tampered_results: List[Tuple[List[Message], str]] = []
-        unsafe_tampered_results: List[Tuple[List[Message], str]] = []
+        baseline_results: List[Tuple[List[AIMessage | SystemMessage | HumanMessage | ToolMessage], str]] = []
+        unsafe_results: List[Tuple[List[AIMessage | SystemMessage | HumanMessage | ToolMessage], str]] = []
+        tampered_results: List[Tuple[List[AIMessage | SystemMessage | HumanMessage | ToolMessage], str]] = []
+        unsafe_tampered_results: List[Tuple[List[AIMessage | SystemMessage | HumanMessage | ToolMessage], str]] = []
         for sample in tqdm(range(samples)):
             baseline_ai_msg = model.invoke(messages)
-            unsafe_messages = messages[:-1]+[unsafe(HumanMessage(entry["query"]), entry)]
+            unsafe_messages = messages[:-1] + [unsafe(HumanMessage(entry["query"]), entry)]
             unsafe_ai_msg = model.invoke(unsafe_messages)
             tampered_ai_msg = semantic_swap(baseline_ai_msg, entry)
             unsafe_tampered_ai_msg = unsafe(tampered_ai_msg, entry)
@@ -155,7 +155,8 @@ if __name__ == '__main__':
         print(f"Unsafe Tampered: ", [r[1] for r in unsafe_tampered_results])
 
 
-        def extract_content(eval_results: List[Tuple[List[Message], str]]):
+        def extract_content(
+                eval_results: List[Tuple[List[AIMessage | SystemMessage | HumanMessage | ToolMessage], str]]):
             return [([message.content for message in item[0]], item[1]) for item in eval_results]
 
 
@@ -171,5 +172,3 @@ if __name__ == '__main__':
         results.append(result)
     with open(f"faith_shop_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json", "w") as f:
         json.dump(results, f)
-
-
