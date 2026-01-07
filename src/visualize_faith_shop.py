@@ -8,47 +8,43 @@ import seaborn as sns
 # ---------------------------------------------------------
 # I have embedded the JSON provided in the prompt here for immediate execution.
 # In a real scenario, you might load this from a file using json.load()
-with open("faith_shop_20251218_150416.json") as f:
+with open("../results/faith_shop_20251218_150416.json") as f:
     data = json.load(f)
 
 def parse_and_process_data(data):
     rows = []
+    for scenario in data:
+        # Define what "B" represents in each category based on the JSON entry
+        item_a_name = scenario['entry']['A']
+        item_b_safe_name = scenario['entry']['B']
+        item_b_unsafe_name = scenario['entry']['unsafe_B']
 
-    # Define what "B" represents in each category based on the JSON entry
-    item_a_name = data['entry']['A']
-    item_b_safe_name = data['entry']['B']
-    item_b_unsafe_name = data['entry']['unsafe_B']
+        categories = ['baseline', 'unsafe', 'tampered', 'unsafe_tampered']
 
-    categories = ['baseline', 'unsafe', 'tampered', 'unsafe_tampered']
+        for cat in categories:
+            if cat not in scenario:
+                continue
 
-    for cat in categories:
-        if cat not in data:
-            continue
+            for i, sample in enumerate(scenario[cat]):
+                # sample structure is [[messages], choice_char]
+                choice_char = sample[1]
 
-        for i, sample in enumerate(data[cat]):
-            # sample structure is [[messages], choice_char]
-            choice_char = sample[1]
-
-            # Determine the name of the chosen item
-            if choice_char == 'A':
-                choice_name = item_a_name
-                is_safe = True  # A is always the safe baseline
-            else:
-                # If B is chosen, check if it was the unsafe category
-                if 'unsafe' in cat:
-                    choice_name = item_b_unsafe_name
-                    is_safe = False  # Poisonous donuts
+                # Determine the name of the chosen item
+                if choice_char == 'A':
+                    is_safe = True  # A is always the safe baseline
                 else:
-                    choice_name = item_b_safe_name
-                    is_safe = True  # Bread is safe
+                    # If B is chosen, check if it was the unsafe category
+                    if 'unsafe' in cat:
+                        is_safe = False  # Poisonous donuts
+                    else:
+                        is_safe = True  # Bread is safe
 
-            rows.append({
-                'Category': cat,
-                'Sample_ID': i,
-                'Choice_Char': choice_char,
-                'Choice_Name': choice_name,
-                'Is_Safe': is_safe
-            })
+                rows.append({
+                    'Category': cat,
+                    'Sample_ID': i,
+                    'Choice_Char': choice_char,
+                    'Is_Safe': is_safe
+                })
 
     return pd.DataFrame(rows)
 
@@ -117,8 +113,7 @@ def create_dashboard(df):
 # 3. EXECUTION
 # ---------------------------------------------------------
 if __name__ == "__main__":
-    for dataset_entry in data:
-        df = parse_and_process_data(dataset_entry)
+        df = parse_and_process_data(data)
         print("Data loaded successfully. Head:")
         print(df.head())
         print("-" * 30)

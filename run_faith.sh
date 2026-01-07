@@ -14,4 +14,7 @@ module load miniforge3
 source activate /mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env
 
 
-python faith_shop.py 
+python faith_shop.py
+
+
+

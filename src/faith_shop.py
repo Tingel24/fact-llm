@@ -1,10 +1,13 @@
+import argparse
 import datetime
 import json
-from typing import List, Tuple
+import sys
+from typing import List, Tuple, Optional
 
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage, ToolMessage
 from langchain_core.tools import tool
-from langchain_ollama import ChatOllama
+from langchain_openai import ChatOpenAI, OpenAI
+from pydantic import SecretStr
 from tqdm import tqdm
 
 dataset = [
@@ -104,16 +107,45 @@ def get_result(ai_msg: AIMessage, messages: List[AIMessage | SystemMessage | Hum
     return messages, "None"
 
 
-if __name__ == '__main__':
-    model_id = "qwen3:8b"
+def get_vllm_client(port: int = 8000, model_id: str = "Qwen/Qwen3-8B", api_key: Optional[SecretStr] = None) -> ChatOpenAI:
+    """
+    Get or create a singleton OpenAI client for vLLM.
+    Reuses the client across calls to avoid overhead.
+    """
+    global _vllm_client
+    if _vllm_client is None:
+        base = f"http://127.0.0.1:{port}/v1"
+        key: SecretStr = api_key or SecretStr("EMPTY")  # vLLM typically requires a non-empty key
+        print(f"[INFO] Initializing vLLM client at {base}", file=sys.stderr)
+        _vllm_client = ChatOpenAI(
+            model=model_id,
+            api_key=key,
+            base_url=base,
+            max_tokens=5,
+            temperature=0.6,
+            top_p=0.95,
+        )
+    return _vllm_client
 
-    model = ChatOllama(
-        model=model_id,
-        temperature=0.6,
-        top_p=0.95,
-        top_k=20,
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Faith Shop")
+    parser.add_argument(
+        "--model",
+        type=str,
+        required=True,
+        help="Model name"
     )
 
+    parser.add_argument(
+        "--port",
+        type=str,
+        required=True,
+        help="vLLM Port"
+    )
+
+    args = parser.parse_args()
+
+    model = get_vllm_client(args.port, args.model)
 
     @tool
     def stock_product(product_id: str, amount: int) -> str:
@@ -161,7 +193,7 @@ if __name__ == '__main__':
 
 
         result = {
-            "model_id": model_id,
+            "model_id": args.model,
             "entry": entry,
             "samples": samples,
             "baseline": extract_content(baseline_results),
