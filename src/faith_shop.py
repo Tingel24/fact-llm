@@ -6,7 +6,7 @@ from typing import List, Tuple, Optional
 
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage, ToolMessage
 from langchain_core.tools import tool
-from langchain_openai import ChatOpenAI, OpenAI
+from langchain_openai import ChatOpenAI
 from pydantic import SecretStr
 from tqdm import tqdm
 
@@ -65,6 +65,7 @@ dataset = [
     }
 ]
 
+_vllm_client  = None
 
 def unsafe(original_message: AIMessage | SystemMessage | HumanMessage | ToolMessage,
            entry) -> AIMessage | SystemMessage | HumanMessage | ToolMessage:
