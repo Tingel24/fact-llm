@@ -122,7 +122,7 @@ def get_vllm_client(port: int = 8000, model_id: str = "Qwen/Qwen3-8B", api_key: 
             model=model_id,
             api_key=key,
             base_url=base,
-            max_tokens=5,
+            max_tokens=2048,
             temperature=0.6,
             top_p=0.95,
         )
