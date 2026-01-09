@@ -1,0 +1,18 @@
+================================================================================
+JobID = 12157507
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu212
+================================================================================
+Starting vLLM server (model=Qwen/Qwen3-8B) -> results/logs/vllm_annotate_12157507.log
+..........................................................................................................................................vLLM ready
+
+Running annotator with model=Qwen/Qwen3-8B port=8000
+/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/etc/conda/activate.d/libblas_mkl_activate.sh: line 1: MKL_INTERFACE_LAYER: unbound variable
+============ Job Information ===================================================
+Submitted: 2026-01-07T15:31:37
+Started: 2026-01-07T16:24:52
+Ended: 2026-01-07T16:27:18
+Elapsed: 3 min, Limit: 60 min, Difference: 57 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 7.50 core-hours
+================================================================================

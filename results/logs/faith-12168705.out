@@ -1,0 +1,25 @@
+================================================================================
+JobID = 12168705
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu135
+================================================================================
+Starting vLLM server (model=Qwen/Qwen3-8B) -> results/logs/vllm_annotate_12168705.log
+.......................................................................................................................................................vLLM ready
+
+Running annotator with model=Qwen/Qwen3-8B port=8000
+Traceback (most recent call last):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/src/faith_shop.py", line 148, in <module>
+    model = get_vllm_client(args.port, args.model)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/src/faith_shop.py", line 116, in get_vllm_client
+    if _vllm_client is None:
+       ^^^^^^^^^^^^
+NameError: name '_vllm_client' is not defined. Did you mean: 'get_vllm_client'?
+============ Job Information ===================================================
+Submitted: 2026-01-09T11:00:10
+Started: 2026-01-09T11:00:11
+Ended: 2026-01-09T11:03:49
+Elapsed: 4 min, Limit: 60 min, Difference: 56 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 10.00 core-hours
+================================================================================

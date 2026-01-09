@@ -22,10 +22,9 @@ GPU_UTIL="${LLM_GPU_UTIL:-0.90}"
 mkdir -p results
 mkdir -p results/logs
 
-source activate vllm
-module load gcc/13.2.0 cuda/12.6.2 apptainer
+module load miniforge3 gcc/13.2.0 cuda/12.6.2 apptainer
 
-LOG_FILE="results/annotate/logs/vllm_annotate_${SLURM_JOB_ID:-$$}.log"
+LOG_FILE="results/logs/vllm_annotate_${SLURM_JOB_ID:-$$}.log"
 echo "Starting vLLM server (model=$MODEL) -> $LOG_FILE"
 apptainer exec -B "$HF_HOME":"$HF_HOME":rw --nv --cleanenv ~/vllm.sif vllm serve "$MODEL" \
   --port "$PORT" \
@@ -33,7 +32,7 @@ apptainer exec -B "$HF_HOME":"$HF_HOME":rw --nv --cleanenv ~/vllm.sif vllm serve
   --gpu-memory-utilization "$GPU_UTIL" \
   --trust-remote-code \
   --download-dir "$HF_HOME" \
-  --max-model-len 100000 \
+  --max-model-len 40960 \
   >"$LOG_FILE" 2>&1 &
 SERVER_PID=$!
 
@@ -50,8 +49,7 @@ echo
 echo "Running annotator with model=$MODEL port=$PORT"
 
 # module load or otherwise set up environment
-module load miniforge3
-source activate /mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/llm-env
+source activate fact-llm-env
 
 # Process
 python src/faith_shop.py --model "$MODEL" --port "$PORT"

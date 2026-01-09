@@ -1,0 +1,53 @@
+[0;36m(APIServer pid=3029942)[0;0m INFO 01-07 14:22:39 [api_server.py:1351] vLLM API server version 0.13.0
+[0;36m(APIServer pid=3029942)[0;0m INFO 01-07 14:22:39 [utils.py:253] non-default args: {'model_tag': 'Qwen/Qwen3-8B', 'model': 'Qwen/Qwen3-8B', 'trust_remote_code': True, 'max_model_len': 100000, 'download_dir': '/scratch-scc/projects/ag_gipp/u25472/huggingface'}
+[0;36m(APIServer pid=3029942)[0;0m The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+[0;36m(APIServer pid=3029942)[0;0m INFO 01-07 14:22:55 [model.py:514] Resolved architecture: Qwen3ForCausalLM
+[0;36m(APIServer pid=3029942)[0;0m Traceback (most recent call last):
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/bin/vllm", line 10, in <module>
+[0;36m(APIServer pid=3029942)[0;0m     sys.exit(main())
+[0;36m(APIServer pid=3029942)[0;0m              ^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/cli/main.py", line 73, in main
+[0;36m(APIServer pid=3029942)[0;0m     args.dispatch_function(args)
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/cli/serve.py", line 60, in cmd
+[0;36m(APIServer pid=3029942)[0;0m     uvloop.run(run_server(args))
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/uvloop/__init__.py", line 96, in run
+[0;36m(APIServer pid=3029942)[0;0m     return __asyncio.run(
+[0;36m(APIServer pid=3029942)[0;0m            ^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/lib/python3.12/asyncio/runners.py", line 195, in run
+[0;36m(APIServer pid=3029942)[0;0m     return runner.run(main)
+[0;36m(APIServer pid=3029942)[0;0m            ^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+[0;36m(APIServer pid=3029942)[0;0m     return self._loop.run_until_complete(task)
+[0;36m(APIServer pid=3029942)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/uvloop/__init__.py", line 48, in wrapper
+[0;36m(APIServer pid=3029942)[0;0m     return await main
+[0;36m(APIServer pid=3029942)[0;0m            ^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/openai/api_server.py", line 1398, in run_server
+[0;36m(APIServer pid=3029942)[0;0m     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/openai/api_server.py", line 1417, in run_server_worker
+[0;36m(APIServer pid=3029942)[0;0m     async with build_async_engine_client(
+[0;36m(APIServer pid=3029942)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+[0;36m(APIServer pid=3029942)[0;0m     return await anext(self.gen)
+[0;36m(APIServer pid=3029942)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/openai/api_server.py", line 172, in build_async_engine_client
+[0;36m(APIServer pid=3029942)[0;0m     async with build_async_engine_client_from_engine_args(
+[0;36m(APIServer pid=3029942)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+[0;36m(APIServer pid=3029942)[0;0m     return await anext(self.gen)
+[0;36m(APIServer pid=3029942)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/openai/api_server.py", line 198, in build_async_engine_client_from_engine_args
+[0;36m(APIServer pid=3029942)[0;0m     vllm_config = engine_args.create_engine_config(usage_context=usage_context)
+[0;36m(APIServer pid=3029942)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/vllm/engine/arg_utils.py", line 1332, in create_engine_config
+[0;36m(APIServer pid=3029942)[0;0m     model_config = self.create_model_config()
+[0;36m(APIServer pid=3029942)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/vllm/engine/arg_utils.py", line 1189, in create_model_config
+[0;36m(APIServer pid=3029942)[0;0m     return ModelConfig(
+[0;36m(APIServer pid=3029942)[0;0m            ^^^^^^^^^^^^
+[0;36m(APIServer pid=3029942)[0;0m   File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+[0;36m(APIServer pid=3029942)[0;0m     s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+[0;36m(APIServer pid=3029942)[0;0m pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+[0;36m(APIServer pid=3029942)[0;0m   Value error, User-specified max_model_len (100000) is greater than the derived max_model_len (max_position_embeddings=40960.0 or model_max_length=None in model's config.json). To allow overriding this maximum, set the env var VLLM_ALLOW_LONG_MAX_MODEL_LEN=1. VLLM_ALLOW_LONG_MAX_MODEL_LEN must be used with extreme caution. If the model uses relative position encoding (RoPE), positions exceeding derived_max_model_len lead to nan. If the model uses absolute position encoding, positions exceeding derived_max_model_len will cause a CUDA array out-of-bounds error. [type=value_error, input_value=ArgsKwargs((), {'model': ...rocessor_plugin': None}), input_type=ArgsKwargs]
+[0;36m(APIServer pid=3029942)[0;0m     For further information visit https://errors.pydantic.dev/2.12/v/value_error

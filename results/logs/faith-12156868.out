@@ -1,0 +1,22 @@
+================================================================================
+JobID = 12156868
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu196
+================================================================================
+Starting vLLM server (model=Qwen/Qwen3-8B) -> results/logs/vllm_annotate_12156868.log
+..............................................................vLLM ready
+
+Running annotator with model=Qwen/Qwen3-8B port=8000
+
+EnvironmentNameNotFound: Could not find conda environment: llm-env
+You can list all discoverable environments with `conda info --envs`.
+
+
+============ Job Information ===================================================
+Submitted: 2026-01-07T14:48:34
+Started: 2026-01-07T14:49:25
+Ended: 2026-01-07T14:50:34
+Elapsed: 2 min, Limit: 60 min, Difference: 58 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 5.00 core-hours
+================================================================================
