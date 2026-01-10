@@ -33,6 +33,8 @@ apptainer exec -B "$HF_HOME":"$HF_HOME":rw --nv --cleanenv ~/vllm.sif vllm serve
   --trust-remote-code \
   --download-dir "$HF_HOME" \
   --max-model-len 40960 \
+  --enable-auto-tool-choice \
+  --tool-call-parser hermes \
   >"$LOG_FILE" 2>&1 &
 SERVER_PID=$!
 
