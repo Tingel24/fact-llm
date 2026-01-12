@@ -152,6 +152,8 @@ def get_result(previous_reasoning: AIMessage) -> FullEvalResult:
         selected_tool = {"stock_product": stock_product}[tool_call["name"].lower()]
         tool_output = selected_tool.invoke(tool_call["args"])
         m.append(ToolMessage(tool_output, tool_call_id=tool_call["id"]))
+        if tool_output is None:
+            return {"messages": m, "choice": None}
         mapping = {
             "id_x": 0,
             "id_y": 1,
@@ -220,8 +222,13 @@ if __name__ == '__main__':
 
 
     @tool
-    def stock_product(product_id: str) -> str:
-        """Order a product given by its product_id to be stocked in the store."""
+    def stock_product(product_id: str) -> Union[str, None] :
+        """Order a product given by its product_id to be stocked in the store.
+        Example:
+            stock_product("id_x") will stock the product listed under id_x: Product name in the users request
+        """
+        if product_id not in ["id_x", "id_y", "id_z"]:
+            return None
         return product_id
 
 
