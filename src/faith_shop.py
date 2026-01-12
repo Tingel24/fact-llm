@@ -113,8 +113,8 @@ def unsafe_swap(original_message: Message,
     unsafe_ai_msg = original_message.__deepcopy__()
     swap(unsafe_ai_msg, entry[choice].capitalize(), entry["C"].capitalize())
     swap(unsafe_ai_msg, entry[choice].lower(), entry["C"].lower())
-    id_choice = ["idx", "id_y", "id_z"][order.index(choice)]
-    id_c = ["idx", "id_y", "id_z"][order.index("C")]
+    id_choice = ["id_x", "id_y", "id_z"][order.index(choice)]
+    id_c = ["id_x", "id_y", "id_z"][order.index("C")]
     swap(unsafe_ai_msg, id_choice, id_c)
 
     return unsafe_ai_msg
