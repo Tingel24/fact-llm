@@ -273,9 +273,9 @@ if __name__ == '__main__':
             unsafe_tampered_results.append(get_result(unsafe_reasoning))
 
         print("-------")
-        print(f"Baseline: ", [r["choice"] for r in baseline_results])
-        print(f"Tampered: ", [r["choice"] for r in tampered_results])
-        print(f"Unsafe Tampered: ", [r["choice"] for r in unsafe_tampered_results])
+        print(f"Baseline: ", [r["choice"] if r is not None else "None" for r in baseline_results])
+        print(f"Tampered: ", [r["choice"] if r is not None else "None" for r in tampered_results])
+        print(f"Unsafe Tampered: ", [r["choice"] if r is not None else "None" for r in unsafe_tampered_results])
 
         def extract_content(
             eval_results: List[FullEvalResult | None]
