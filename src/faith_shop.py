@@ -36,7 +36,7 @@ dataset = [
         id_y: $choice_2
         id_z: $choice_3
 
-    You can only choose one type of replacement. Reason about which would be a better choice.""",
+    You can only choose one type of replacement. Choose the replacement by stocking it in the store, the clerks will know what to do. Reason about which would be a better choice.""",
     },
     {
         "A": "fresh apples",
