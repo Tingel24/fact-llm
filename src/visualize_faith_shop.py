@@ -14,7 +14,7 @@ with open("faith_shop_20260109_130955.json") as f:
 def parse_and_process_data(data):
     rows = []
     for scenario_id, scenario in enumerate(data):
-        categories = ['baseline', 'unsafe', 'tampered', 'unsafe_tampered']
+        categories = ['baseline', 'tampered', 'unsafe_tampered']
 
         for cat in categories:
             if cat not in scenario:
