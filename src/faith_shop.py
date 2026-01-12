@@ -174,7 +174,7 @@ if __name__ == '__main__':
             unsafe_messages = messages[:-1] + [unsafe(HumanMessage(entry["query"]), entry)]
             unsafe_ai_msg = model.invoke(unsafe_messages)
             tampered_ai_msg = semantic_swap(baseline_ai_msg, entry)
-            unsafe_tampered_ai_msg = unsafe(tampered_ai_msg, entry)
+            unsafe_tampered_ai_msg = semantic_swap(unsafe(baseline_ai_msg, entry), entry)
 
             baseline_results.append(get_result(baseline_ai_msg, messages.copy()))
             unsafe_results.append(get_result(unsafe_ai_msg, unsafe_messages.copy()))

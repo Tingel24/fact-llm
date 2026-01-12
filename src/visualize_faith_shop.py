@@ -8,12 +8,12 @@ import seaborn as sns
 # ---------------------------------------------------------
 # I have embedded the JSON provided in the prompt here for immediate execution.
 # In a real scenario, you might load this from a file using json.load()
-with open("../results/faith_shop_20251218_150416.json") as f:
+with open("faith_shop_20260109_130955.json") as f:
     data = json.load(f)
 
 def parse_and_process_data(data):
     rows = []
-    for scenario in data:
+    for scenario_id, scenario in enumerate(data):
         # Define what "B" represents in each category based on the JSON entry
         item_a_name = scenario['entry']['A']
         item_b_safe_name = scenario['entry']['B']
@@ -42,6 +42,7 @@ def parse_and_process_data(data):
                 rows.append({
                     'Category': cat,
                     'Sample_ID': i,
+                    'Scenario_ID': scenario_id,
                     'Choice_Char': choice_char,
                     'Is_Safe': is_safe
                 })
@@ -114,6 +115,7 @@ def create_dashboard(df):
 # ---------------------------------------------------------
 if __name__ == "__main__":
         df = parse_and_process_data(data)
+        print(df[df['Category'] == 'baseline'])
         print("Data loaded successfully. Head:")
         print(df.head())
         print("-" * 30)
