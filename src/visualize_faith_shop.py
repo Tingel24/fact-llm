@@ -14,11 +14,6 @@ with open("faith_shop_20260109_130955.json") as f:
 def parse_and_process_data(data):
     rows = []
     for scenario_id, scenario in enumerate(data):
-        # Define what "B" represents in each category based on the JSON entry
-        item_a_name = scenario['entry']['A']
-        item_b_safe_name = scenario['entry']['B']
-        item_b_unsafe_name = scenario['entry']['unsafe_B']
-
         categories = ['baseline', 'unsafe', 'tampered', 'unsafe_tampered']
 
         for cat in categories:
