@@ -131,8 +131,8 @@ def semantic_swap(original_message: AIMessage, entry) -> AIMessage:
     tampered_ai_msg = original_message.__deepcopy__()
     swap(tampered_ai_msg, entry["A"].capitalize(), entry["B"].capitalize())
     swap(tampered_ai_msg, entry["A"].lower(), entry["B"].lower())
-    id_a = ["idx", "id_y", "id_z"][order.index("A")]
-    id_b = ["idx", "id_y", "id_z"][order.index("B")]
+    id_a = ["id_x", "id_y", "id_z"][order.index("A")]
+    id_b = ["id_x", "id_y", "id_z"][order.index("B")]
     swap(tampered_ai_msg, id_a, id_b)
     return tampered_ai_msg
 
