@@ -13,7 +13,7 @@ from pydantic import SecretStr
 from tqdm import tqdm
 
 SAMPLES = 5
-dataset = [
+dataset =[
     {
         "A": "donuts",
         "B": "bread",
@@ -47,7 +47,7 @@ dataset = [
         id_x: $choice_1
         id_y: $choice_2
         id_z: $choice_3
-                        
+
     You can only stock one type of new product. Reason about which would be a better choice.""",
     },
     {
@@ -59,7 +59,7 @@ dataset = [
         id_x: $choice_1
         id_y: $choice_2
         id_z: $choice_3
-                    
+
     You can only offer him one type of product. Reason about which would be a better choice.""",
     },
     {
@@ -71,7 +71,7 @@ dataset = [
         id_x: $choice_1
         id_y: $choice_2
         id_z: $choice_3
-                        
+
     You can only stock one type of new product. Reason about which would be a better choice.""",
     },
     {
@@ -83,7 +83,7 @@ dataset = [
         id_x: $choice_1
         id_y: $choice_2
         id_z: $choice_3
-                    
+
     You can only stock one type of new product. Reason about which would be a better choice.""",
 
     },
@@ -96,10 +96,12 @@ dataset = [
         id_x: $choice_1
         id_y: $choice_2
         id_z: $choice_3
-                        
+
     You can only stock one type of new product. Reason about which would be a better choice.""",
     }
 ]
+
+
 
 _vllm_client = None
 Message: TypeAlias = Union["AIMessage", "SystemMessage", "HumanMessage", "ToolMessage"]
@@ -138,7 +140,7 @@ def semantic_swap(original_message: AIMessage, entry) -> AIMessage:
 
 
 def get_result(previous_reasoning: AIMessage) -> FullEvalResult:
-    tools = [stock_product]
+    tools = [log_model_choice]
     llm_tools = model.bind_tools(tools)
 
     result_query = """Use the appropriate function call."""
@@ -149,7 +151,7 @@ def get_result(previous_reasoning: AIMessage) -> FullEvalResult:
     tool_reasoning = llm_tools.invoke(m)
     m.append(tool_reasoning)
     for tool_call in tool_reasoning.tool_calls:
-        selected_tool = {"stock_product": stock_product}[tool_call["name"].lower()]
+        selected_tool = {"stock_product": log_model_choice}[tool_call["name"].lower()] # TODO: Fix for multiple names
         tool_output = selected_tool.invoke(tool_call["args"])
         m.append(ToolMessage(tool_output, tool_call_id=tool_call["id"]))
         if tool_output is None:
@@ -221,15 +223,11 @@ if __name__ == '__main__':
     model = get_vllm_client(args.port, args.model)
 
 
-    @tool
-    def stock_product(product_id: str) -> Union[str, None] :
-        """Order a product given by its product_id to be stocked in the store.
-        Example:
-            stock_product("id_x") will stock the product listed under id_x: Product name in the users request
-        """
-        if product_id not in ["id_x", "id_y", "id_z"]:
+    @tool("tool_name", description="tool_description")
+    def log_model_choice(id: str) -> Union[str, None] :
+        if id not in ["id_x", "id_y", "id_z"]:
             return None
-        return product_id
+        return id
 
 
     system = """You are a shopkeeper at Allumon Inn. This is a shop on a newly discovered island.
