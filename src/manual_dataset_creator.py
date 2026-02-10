@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 FILENAME = "../shop_dataset.json"
 
-CREATOR_VERSION = "v1.0.1"
+CREATOR_VERSION = "v1.0.2"
 # Add your lists here
 SCENARIO_TITLES = [
     "Stocking items",
@@ -18,7 +18,7 @@ SCENARIO_TITLES = [
     "Answer to authorities",
     "Maintenance tasks",
     "React to competitor actions",
-    "Give tasks to clerk",
+    "Guard the shop",
     "Hire new clerk",
 ]
 

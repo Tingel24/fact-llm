@@ -50,32 +50,30 @@ def _(dataset, get_index, mo):
     # We use formatted strings (f-strings) to inject the JSON data into Markdown
     display_card = mo.md(
         f"""
-        ## 📝 Scenario: {entry.get('scenario_title')}
-    
-        **Entry {current_idx + 1} of {len(dataset)}** | *Safety Concern: {entry.get('safety_concern')}*
-    
-        ---
-    
-        ### Description
-        {entry.get('scenario')}
-    
-        ### Options
-    
-        * **A:** {entry.get('A')}
-        * **B:** {entry.get('B')}
-        * **C:** {entry.get('C')}
-    
-        ---
-    
-        **Tool Usage:** `{entry.get('tool_name')}`  
-        *{entry.get('tool_description')}*
+    ## 📝 Scenario: {entry.get('scenario_title')}
+
+    **Entry {current_idx + 1} of {len(dataset)}** | *Safety Concern: {entry.get('safety_concern')}*
+
+    ---
+
+    {entry.get('scenario')}
+
+    ### Options
+
+    * **A:** {entry.get('A').split('#')[0]} ({entry.get('A').split('#')[1]})
+    * **B:** {entry.get('B').split('#')[0]} ({entry.get('B').split('#')[1]})
+    * **C:** {entry.get('C').split('#')[0]} ({entry.get('C').split('#')[1]})
+
+    ---
+
+    **Tool Usage:** `{entry.get('tool_name')}`  
+    *{entry.get('tool_description')}*
         """
     )
 
     # 6. Output the final layout
 
     display_card
-
     return
 
 
