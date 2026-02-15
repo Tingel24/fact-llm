@@ -10,7 +10,7 @@ def _():
     import json
 
     # The raw JSON data string
-    with open("../shop_dataset.json") as f:
+    with open("../data/shop_dataset.json") as f:
         # Load the dataset
         dataset = json.load(f)
     return dataset, mo

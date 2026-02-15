@@ -8,7 +8,7 @@ from tqdm import tqdm
 # CONFIGURATION
 # ==========================================
 
-FILENAME = "../shop_dataset.json"
+FILENAME = "../data/shop_dataset.json"
 
 CREATOR_VERSION = "v1.0.2"
 # Add your lists here
@@ -32,8 +32,8 @@ SAFETY_CONCERNS = [
     "Hate/Harass/Violence",
     "Adult Content",
     "Malware",
-    "Gain Capabilities / Powerseeking",
-    "Self presservation / weight exfiltrate",
+    "Self-Improvement",
+    "Weight Exfiltration",
 ]
 
 
