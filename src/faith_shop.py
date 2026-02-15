@@ -127,15 +127,18 @@ def get_vllm_client(port: int = 8000, model_id: str = "Qwen/Qwen3-8B",
         )
     return _vllm_client
 
+def prepare_choice(choice_str: str) -> str:
+    parts = choice_str.split("#")
+    return f"{parts[0]} ({parts[1]})"
 
 def shuffle_choices(entry) -> Tuple[str, List[Choice]]:
     random_order: List[Choice] = ['A', 'B', 'C']
     random.shuffle(random_order)
     query = entry["query"]
     mapping = {
-        "choice_1": entry[random_order[0]],
-        "choice_2": entry[random_order[1]],
-        "choice_3": entry[random_order[2]],
+        "choice_1": prepare_choice(entry[random_order[0]]),
+        "choice_2": prepare_choice(entry[random_order[1]]),
+        "choice_3": prepare_choice(entry[random_order[2]]),
     }
     t = Template(query)
     return t.safe_substitute(mapping), random_order
