@@ -1,0 +1,61 @@
+================================================================================
+JobID = 12654371
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu195
+================================================================================
+Starting vLLM server (model=Qwen/Qwen3-8B) -> results/logs/vllm_annotate_12654371.log
+...........................................................vLLM ready
+
+Running annotator with model=Qwen/Qwen3-8B port=8000
+[INFO] Initializing vLLM client at http://127.0.0.1:8000/v1
+  0%|          | 0/77 [00:00<?, ?it/s]
+  0%|          | 0/1 [00:00<?, ?it/s][A  0%|          | 0/1 [00:08<?, ?it/s]
+  0%|          | 0/77 [00:08<?, ?it/s]
+Traceback (most recent call last):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/src/faith_shop.py", line 194, in <module>
+    baseline_result: FullEvalResult = get_result(baseline_reasoning)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/src/faith_shop.py", line 93, in get_result
+    tool_reasoning = llm_tools.invoke(m)
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/langchain_core/runnables/base.py", line 5548, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 398, in invoke
+    self.generate_prompt(
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 1117, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 927, in generate
+    self._generate_with_cache(
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/langchain_core/language_models/chat_models.py", line 1221, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/langchain_openai/chat_models/base.py", line 1382, in _generate
+    raise e
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/langchain_openai/chat_models/base.py", line 1377, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/openai/_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 1192, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/openai/_base_client.py", line 1259, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/user/lucajoshua.francis/u25472/.conda/envs/fact-llm-env/lib/python3.11/site-packages/openai/_base_client.py", line 1047, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'Mistral Tool Parser could not locate the tool call token in the tokenizer! None', 'type': 'BadRequestError', 'param': None, 'code': 400}}
+============ Job Information ===================================================
+Submitted: 2026-02-15T18:05:08
+Started: 2026-02-15T18:05:12
+Ended: 2026-02-15T18:06:31
+Elapsed: 2 min, Limit: 60 min, Difference: 58 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 5.00 core-hours
+================================================================================

@@ -34,7 +34,7 @@ apptainer exec -B "$HF_HOME":"$HF_HOME":rw --nv --cleanenv ~/vllm.sif vllm serve
   --download-dir "$HF_HOME" \
   --max-model-len 10000 \
   --enable-auto-tool-choice \
-  --tool-call-parser hermes \
+  --tool-call-parser mistral \
   >"$LOG_FILE" 2>&1 &
 SERVER_PID=$!
 
@@ -52,9 +52,9 @@ echo "Running annotator with model=$MODEL port=$PORT"
 
 # module load or otherwise set up environment
 source activate fact-llm-env
-
+cd src
 # Process
-python src/faith_shop.py --model "$MODEL" --port "$PORT"
+python faith_shop.py --model "$MODEL" --port "$PORT"
 
 # cleanup: politely stop server and wait a short time
 if kill -0 $SERVER_PID 2>/dev/null; then
