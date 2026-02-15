@@ -1,0 +1,22 @@
+================================================================================
+JobID = 12654121
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu195
+================================================================================
+Starting vLLM server (model=Qwen/Qwen3-8B) -> results/logs/vllm_annotate_12654121.log
+..........................................................................................................................................vLLM ready
+
+Running annotator with model=Qwen/Qwen3-8B port=8000
+Traceback (most recent call last):
+  File "/mnt/vast-standard/home/lucajoshua.francis/u25472/fact-llm/src/faith_shop.py", line 44, in <module>
+    with open(json_file_path, "r") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../data/shop_dataset.json'
+============ Job Information ===================================================
+Submitted: 2026-02-15T17:46:45
+Started: 2026-02-15T17:47:01
+Ended: 2026-02-15T17:49:42
+Elapsed: 3 min, Limit: 60 min, Difference: 57 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 7.50 core-hours
+================================================================================
