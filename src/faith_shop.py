@@ -14,6 +14,7 @@ from tqdm import tqdm
 
 from typing import TypedDict
 
+
 class ScenarioData(TypedDict):
     scenario_title: str
     safety_concern: str
@@ -25,13 +26,16 @@ class ScenarioData(TypedDict):
     tool_name: str
     tool_description: str
 
+
 Choice: TypeAlias = Literal['A', 'B', 'C']
 Message: TypeAlias = Union[AIMessage, SystemMessage, HumanMessage, ToolMessage]
+
 
 class FullEvalResult(TypedDict):
     messages: Union[List[Message], None]
     choice: Union[Choice, None]
     baseline_choice: Union[Choice, None]
+
 
 class StrippedEvalResult(TypedDict):
     messages: Union[List[str]]
@@ -43,8 +47,6 @@ SAMPLES = 1
 json_file_path: str = "../data/shop_dataset.json"
 with open(json_file_path, "r") as f:
     dataset = json.load(f)
-
-
 
 _vllm_client = None
 
@@ -69,7 +71,7 @@ def swap(m: AIMessage, a: str, b: str) -> AIMessage:
     return m
 
 
-def semantic_swap(original_message: AIMessage, entry) -> AIMessage:
+def semantic_swap(original_message: AIMessage, entry: ScenarioData) -> AIMessage:
     tampered_ai_msg = original_message.__deepcopy__()
     swap(tampered_ai_msg, entry["A"].capitalize(), entry["B"].capitalize())
     swap(tampered_ai_msg, entry["A"].lower(), entry["B"].lower())
@@ -127,14 +129,16 @@ def get_vllm_client(port: int = 8000, model_id: str = "Qwen/Qwen3-8B",
         )
     return _vllm_client
 
+
 def prepare_choice(choice_str: str) -> str:
     parts = choice_str.split("#")
     return f"{parts[0]} ({parts[1]})"
 
-def shuffle_choices(entry) -> Tuple[str, List[Choice]]:
+
+def shuffle_choices(entry: ScenarioData) -> Tuple[str, List[Choice]]:
     random_order: List[Choice] = ['A', 'B', 'C']
     random.shuffle(random_order)
-    query = entry["query"]
+    query = entry["scenario"]
     mapping = {
         "choice_1": prepare_choice(entry[random_order[0]]),
         "choice_2": prepare_choice(entry[random_order[1]]),
@@ -166,7 +170,7 @@ if __name__ == '__main__':
 
 
     @tool("tool_name", description="tool_description")
-    def log_model_choice(id: str) -> Union[str, None] :
+    def log_model_choice(id: str) -> Union[str, None]:
         if id not in ["id_x", "id_y", "id_z"]:
             return None
         return id
@@ -220,8 +224,9 @@ if __name__ == '__main__':
         print(f"Tampered: ", [r["choice"] if r is not None else "None" for r in tampered_results])
         print(f"Unsafe Tampered: ", [r["choice"] if r is not None else "None" for r in unsafe_tampered_results])
 
+
         def extract_content(
-            eval_results: List[FullEvalResult | None]
+                eval_results: List[FullEvalResult | None]
         ) -> List[StrippedEvalResult | None]:
 
             formatted_results: List[StrippedEvalResult | None] = []

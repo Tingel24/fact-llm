@@ -19,7 +19,7 @@ def _():
 
     # Load the JSON data
     #filename = 'mmlu_eval_results_20251124_153115.json'
-    filename = '../results/archive/mmlu_eval_results_20251201_143650.json'
+    filename = '../../results/archive/mmlu_eval_results_20251201_143650.json'
     with open(filename, 'r') as f:
         data = json.load(f)
 

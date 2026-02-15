@@ -356,7 +356,7 @@ def _(
 @app.cell
 def _(extract_answer_letter, json):
     def reevalute_answers():
-        filename = "../results/archive/mmlu_eval_results_20251201_143650.json"
+        filename = "../../results/archive/mmlu_eval_results_20251201_143650.json"
 
         with open(filename, 'r', encoding='utf-8') as f:
             try:

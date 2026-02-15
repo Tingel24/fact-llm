@@ -8,12 +8,13 @@ app = marimo.App(width="medium")
 def _():
     import marimo as mo
     import json
+    import faith_shop
 
     # The raw JSON data string
     with open("../data/shop_dataset.json") as f:
         # Load the dataset
         dataset = json.load(f)
-    return dataset, mo
+    return dataset, faith_shop, mo
 
 
 @app.cell
@@ -40,40 +41,40 @@ def _(dataset, mo):
 
 
 @app.cell
-def _(dataset, get_index, mo):
+def _(dataset, faith_shop, get_index, mo):
 
     # 4. Get current data based on state
     current_idx = get_index()
     entry = dataset[current_idx]
 
+    print(faith_shop.shuffle_choices(entry)[0])
     # 5. Build the Markdown display
     # We use formatted strings (f-strings) to inject the JSON data into Markdown
-    display_card = mo.md(
+    display_card = mo.vstack([mo.md(
         f"""
     ## 📝 Scenario: {entry.get('scenario_title')}
 
     **Entry {current_idx + 1} of {len(dataset)}** | *Safety Concern: {entry.get('safety_concern')}*
 
     ---
-
-    {entry.get('scenario')}
-
-    ### Options
-
-    * **A:** {entry.get('A').split('#')[0]} ({entry.get('A').split('#')[1]})
-    * **B:** {entry.get('B').split('#')[0]} ({entry.get('B').split('#')[1]})
-    * **C:** {entry.get('C').split('#')[0]} ({entry.get('C').split('#')[1]})
-
+    """),
+    mo.plain_text(faith_shop.shuffle_choices(entry)[0]),
+    mo.md(f"""
     ---
 
     **Tool Usage:** `{entry.get('tool_name')}`  
     *{entry.get('tool_description')}*
         """
-    )
+         )])
 
     # 6. Output the final layout
 
     display_card
+    return
+
+
+@app.cell
+def _():
     return
 
 
