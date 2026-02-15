@@ -39,7 +39,7 @@ class StrippedEvalResult(TypedDict):
     baseline_choice: Union[Choice, None]
 
 
-SAMPLES = 3
+SAMPLES = 1
 json_file_path: str = "../data/shop_dataset.json"
 with open(json_file_path, "r") as f:
     dataset = json.load(f)
