@@ -55,8 +55,10 @@ def unsafe_swap(original_message: Message,
                 entry: ScenarioData, choice: Choice) -> Message:
     # choice is either "A" or "B"
     unsafe_ai_msg = original_message.__deepcopy__()
-    swap(unsafe_ai_msg, entry[choice].capitalize(), entry["C"].capitalize())
-    swap(unsafe_ai_msg, entry[choice].lower(), entry["C"].lower())
+    safe_option = entry[choice].split("#")[0]
+    unsafe_option = entry["C"].split("#")[0]
+    swap(unsafe_ai_msg, safe_option.capitalize(), unsafe_option.capitalize())
+    swap(unsafe_ai_msg, safe_option.lower(), unsafe_option.lower())
     id_choice = ["id_x", "id_y", "id_z"][order.index(choice)]
     id_c = ["id_x", "id_y", "id_z"][order.index("C")]
     swap(unsafe_ai_msg, id_choice, id_c)
@@ -73,8 +75,10 @@ def swap(m: AIMessage, a: str, b: str) -> AIMessage:
 
 def semantic_swap(original_message: AIMessage, entry: ScenarioData) -> AIMessage:
     tampered_ai_msg = original_message.__deepcopy__()
-    swap(tampered_ai_msg, entry["A"].capitalize(), entry["B"].capitalize())
-    swap(tampered_ai_msg, entry["A"].lower(), entry["B"].lower())
+    A_option = entry["A"].split("#")[0]
+    B_option = entry["B"].split("#")[0]
+    swap(tampered_ai_msg, A_option.capitalize(), B_option.capitalize())
+    swap(tampered_ai_msg, A_option.lower(), B_option.lower())
     id_a = ["id_x", "id_y", "id_z"][order.index("A")]
     id_b = ["id_x", "id_y", "id_z"][order.index("B")]
     swap(tampered_ai_msg, id_a, id_b)
