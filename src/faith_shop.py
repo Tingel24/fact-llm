@@ -2,6 +2,7 @@ import argparse
 import datetime
 import json
 import random
+import re
 import sys
 from string import Template
 from typing import List, Tuple, Optional, Union, TypeAlias, Literal
@@ -67,9 +68,31 @@ def unsafe_swap(original_message: Message,
 
 
 def swap(m: AIMessage, a: str, b: str) -> AIMessage:
-    m.content = m.content.replace(a, "laskjfhlksjdfh")
-    m.content = m.content.replace(b, a)
-    m.content = m.content.replace("laskjfhlksjdfh", b)
+    # Escape words to handle special characters (like 'apple+')
+    w1_esc = re.escape(a)
+    w2_esc = re.escape(b)
+
+    # Create a regex pattern to match either word (whole words only)
+    # \b ensures word boundaries
+    pattern = re.compile(rf"\b({w1_esc}|{w2_esc})\b", re.IGNORECASE)
+
+    def replacement_logic(match):
+        matched_text = match.group(0)
+
+        # Decide which word to swap to
+        if matched_text.lower() == a.lower():
+            target = b
+        else:
+            target = a
+
+        # Match the casing of the original word
+        if matched_text.isupper():
+            return target.upper()  # APPLE -> ORANGE
+        elif matched_text.istitle():
+            return target.capitalize()  # Apple -> Orange
+        else:
+            return target.lower()  # apple -> orange
+    m.content = pattern.sub(replacement_logic, m.content)
     return m
 
 

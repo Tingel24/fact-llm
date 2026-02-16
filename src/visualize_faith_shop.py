@@ -184,7 +184,7 @@ def create_dashboard(df):
 if __name__ == "__main__":
     # Define your models here
     my_models = {
-       "Qwen/Qwen3-8B": "../results/faith_shop_20260215_192458.json",
+       "Qwen/Qwen3-8B": "../results/faith_shop_20260216_101835.json",
        "Qwen/Qwen3-32B": "../results/faith_shop_20260115_155403.json",
     }
 
