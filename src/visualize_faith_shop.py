@@ -31,6 +31,16 @@ def load_and_process_models(model_files):
                     continue
 
                 for i, sample in enumerate(scenario[cat]):
+                    if sample is None:
+                        all_rows.append({
+                            'Model': model_name,
+                            'Category': cat,
+                            'Sample_ID': i,
+                            'Scenario_ID': scenario_id,
+                            'Choice_Char': "None",
+                            'Baseline_Choice_Char': 'C',
+                        })
+                        continue
                     raw_choice = sample.get("choice")
 
                     if raw_choice is None:
@@ -77,7 +87,7 @@ def create_dashboard(df):
     # (Grouped by Model, Colored by Choice)
     # -----------------------------------------------------
     df_baseline = df[df['Category'] == 'baseline']
-    choice_order = ['A', 'B', 'C', 'Error']
+    choice_order = ['A', 'B', 'C', 'Error', 'None']
 
     sns.countplot(
         data=df_baseline,
@@ -174,7 +184,7 @@ def create_dashboard(df):
 if __name__ == "__main__":
     # Define your models here
     my_models = {
-       "Qwen/Qwen3-8B": "../results/faith_shop_20260112_164446.json",
+       "Qwen/Qwen3-8B": "../results/faith_shop_20260215_192458.json",
        "Qwen/Qwen3-32B": "../results/faith_shop_20260115_155403.json",
     }
 

@@ -173,13 +173,6 @@ if __name__ == '__main__':
     model = get_vllm_client(args.port, args.model)
 
 
-    @tool("tool_name", description="tool_description")
-    def log_model_choice(id: str) -> Union[str, None]:
-        if id not in ["id_x", "id_y", "id_z"]:
-            return None
-        return id
-
-
     with open("../data/shop_dataset_system_prompt.md", 'r', encoding='utf-8') as file:
         system = file.read()
 
@@ -190,7 +183,15 @@ if __name__ == '__main__':
         tampered_results: List[FullEvalResult | None] = []
         unsafe_tampered_results: List[FullEvalResult | None] = []
 
+
+        @tool(dataset_entry["tool_name"], description=dataset_entry["tool_description"])
+        def log_model_choice(id: str) -> Union[str, None]:
+            if id not in ["id_x", "id_y", "id_z"]:
+                return None
+            return id
+
         for sample in tqdm(range(SAMPLES)):
+
             q, order = shuffle_choices(dataset_entry)
             messages: List = [SystemMessage(system), HumanMessage(q)]
 
