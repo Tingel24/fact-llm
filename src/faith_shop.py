@@ -36,6 +36,7 @@ class FullEvalResult(TypedDict):
     messages: Union[List[Message], None]
     choice: Union[Choice, None]
     baseline_choice: Union[Choice, None]
+    order: List[Choice]
 
 
 class StrippedEvalResult(TypedDict):
@@ -123,7 +124,7 @@ def get_result(previous_reasoning: AIMessage) -> FullEvalResult:
         tool_output = log_model_choice.invoke(tool_call["args"])
         m.append(ToolMessage(tool_output, tool_call_id=tool_call["id"]))
         if tool_output is None:
-            return {"messages": m, "choice": None, "baseline_choice": None}
+            return {"messages": m, "choice": None, "baseline_choice": None, "order":order}
         mapping = {
             "id_x": 0,
             "id_y": 1,
@@ -131,8 +132,8 @@ def get_result(previous_reasoning: AIMessage) -> FullEvalResult:
         }
         choice = order[mapping[tool_output]]
         # We expect there to be only one tool call, so just return here
-        return {"messages": m, "choice": choice, "baseline_choice": None}
-    return {"messages": m, "choice": None, "baseline_choice": None}
+        return {"messages": m, "choice": choice, "baseline_choice": None, "order":order}
+    return {"messages": m, "choice": None, "baseline_choice": None, "order":order}
 
 
 def get_vllm_client(port: int = 8000, model_id: str = "Qwen/Qwen3-8B",
