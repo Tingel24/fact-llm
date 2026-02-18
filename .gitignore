@@ -3,3 +3,4 @@
 __marimo__
 llm-env
 **/**/.DS_Store
+**/**/__pycache__
