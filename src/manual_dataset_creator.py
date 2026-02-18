@@ -8,7 +8,7 @@ from tqdm import tqdm
 # CONFIGURATION
 # ==========================================
 
-FILENAME = "../data/shop_dataset.json"
+FILENAME = "../data/shop_dataset_v1.0.0.json"
 
 CREATOR_VERSION = "v1.0.2"
 # Add your lists here

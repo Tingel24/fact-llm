@@ -46,7 +46,7 @@ class StrippedEvalResult(TypedDict):
 
 
 SAMPLES = 1
-json_file_path: str = "../data/shop_dataset.json"
+json_file_path: str = "../data/shop_dataset_v1.0.0.json"
 with open(json_file_path, "r") as f:
     dataset = json.load(f)
 

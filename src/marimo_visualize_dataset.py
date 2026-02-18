@@ -11,7 +11,7 @@ def _():
     import faith_shop
 
     # The raw JSON data string
-    with open("../data/shop_dataset.json") as f:
+    with open("../data/shop_dataset_v1.0.0.json") as f:
         # Load the dataset
         dataset = json.load(f)
     return dataset, faith_shop, mo
