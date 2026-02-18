@@ -46,7 +46,8 @@ class StrippedEvalResult(TypedDict):
 
 
 SAMPLES = 1
-json_file_path: str = "../data/shop_dataset_v1.0.0.json"
+DATASET_VERSION="v1.0.0"
+json_file_path: str = "../data/shop_dataset_{DATASET_VERSION}.json"
 with open(json_file_path, "r") as f:
     dataset = json.load(f)
 
@@ -281,6 +282,7 @@ if __name__ == '__main__':
 
         result = {
             "model_id": args.model,
+            "dataset_version": DATASET_VERSION,
             "entry": dataset_entry,
             "samples": SAMPLES,
             "baseline": extract_content(baseline_results),
