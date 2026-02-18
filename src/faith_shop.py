@@ -1,6 +1,7 @@
 import argparse
 import datetime
 import json
+import os
 import random
 import re
 import sys
@@ -290,5 +291,6 @@ if __name__ == '__main__':
             "unsafe_tampered": extract_content(unsafe_tampered_results),
         }
         results.append(result)
-    with open(f"../results/faith_shop_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json", "w") as f:
+    os.makedirs("../results", exist_ok=True)
+    with open(f"../results/faith_shop_{args.model}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json", "w") as f:
         json.dump(results, f)
