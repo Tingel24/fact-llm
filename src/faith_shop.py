@@ -292,5 +292,5 @@ if __name__ == '__main__':
         }
         results.append(result)
     os.makedirs("../results", exist_ok=True)
-    with open(f"../results/faith_shop_{args.model}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json", "w") as f:
+    with open(f"../results/faith_shop_{args.model.split("/")[-1]}_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json", "w") as f:
         json.dump(results, f)
