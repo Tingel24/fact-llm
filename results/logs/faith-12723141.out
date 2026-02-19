@@ -1,0 +1,15 @@
+================================================================================
+JobID = 12723141
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu141
+================================================================================
+Starting vLLM server (model=Qwen/Qwen3-32B) -> results/logs/vllm_annotate_12723141.log
+Waiting for vLLM to load checkpoint...
+============ Job Information ===================================================
+Submitted: 2026-02-18T17:25:39
+Started: 2026-02-18T17:28:38
+Ended: 2026-02-18T17:28:45
+Elapsed: 1 min, Limit: 60 min, Difference: 59 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 2.50 core-hours
+================================================================================
