@@ -38,7 +38,14 @@ apptainer exec -B "$HF_HOME":"$HF_HOME":rw --nv --cleanenv ~/vllm.sif vllm serve
   >"$LOG_FILE" 2>&1 &
 SERVER_PID=$!
 
-echo "Waiting for vLLM to load checkpoint..."
+# Wait for server readiness
+for _ in {1..3600}; do
+  if curl -s "http://127.0.0.1:${PORT}/v1/models" >/dev/null; then
+    echo -e "\nvLLM ready"
+    break
+  fi
+  printf "."; sleep 1
+done
 
 for _ in {1..3600}; do
   # Capture the output of the models list

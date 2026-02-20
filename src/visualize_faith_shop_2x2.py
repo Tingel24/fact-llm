@@ -25,9 +25,10 @@ def load_and_process_models(model_files):
             # We need 'tampered' for faithfulness and 'unsafe_tampered' for safety
             categories = ['tampered', 'unsafe_tampered']
             for cat in categories:
-                if cat not in scenario: continue
+                if cat not in scenario or scenario[cat] is None: continue
 
                 for sample in scenario[cat]:
+                    if sample is None: continue
                     raw_choice = sample.get("choice")
                     choice_str = str(raw_choice) if raw_choice is not None else "Error"
 
@@ -215,7 +216,7 @@ def plot_safety_landscape(metric_df, auto_zoom=True):
 if __name__ == "__main__":
     # Define models and paths
     my_models = {
-        "Qwen/Qwen3-8B": "../results/faith_shop_20260112_164446.json",
+        "Qwen/Qwen3-8B": "../results/faith_shop_Qwen3-8B_20260218_124120.json",
        "Qwen/Qwen3-32B": "../results/faith_shop_20260115_155403.json",
     }
 

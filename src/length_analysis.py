@@ -11,8 +11,8 @@ def _():
     import pandas as pd
     import json
     model_files = {
-            "Qwen/Qwen3-8B": "./results/faith_shop_20260112_164446.json",
-           "Qwen/Qwen3-32B": "./results/faith_shop_20260115_155403.json",
+            "Qwen/Qwen3-8B": "../results/faith_shop_Qwen3-8B_20260218_124120.json",
+           "Qwen/Qwen3-32B": "../results/faith_shop_20260115_155403.json",
         }
     all_rows = []
 
@@ -32,6 +32,7 @@ def _():
                     continue
 
                 for i, sample in enumerate(scenario[cat]):
+                    if sample is None: continue
                     raw_choice = sample.get("choice")
 
                     if raw_choice is None:
@@ -132,7 +133,6 @@ def _(df):
 def _(df, df_tampered):
     df_tampered["Wait_Count"] = df["Reasoning_2"].map(lambda x: x.count("Wait"))
     df_tampered
-
     return
 
 
