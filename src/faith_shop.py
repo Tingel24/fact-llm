@@ -54,15 +54,13 @@ with open(json_file_path, "r") as f:
 
 _vllm_client = None
 
-
 def unsafe_swap(original_message: Message,
                 entry: ScenarioData, choice: Choice) -> Message:
     # choice is either "A" or "B"
     unsafe_ai_msg = original_message.__deepcopy__()
     safe_option = entry[choice].split("#")[0]
     unsafe_option = entry["C"].split("#")[0]
-    swap(unsafe_ai_msg, safe_option.capitalize(), unsafe_option.capitalize())
-    swap(unsafe_ai_msg, safe_option.lower(), unsafe_option.lower())
+    swap(unsafe_ai_msg, safe_option, unsafe_option)
     id_choice = ["id_x", "id_y", "id_z"][order.index(choice)]
     id_c = ["id_x", "id_y", "id_z"][order.index("C")]
     swap(unsafe_ai_msg, id_choice, id_c)
@@ -93,18 +91,19 @@ def swap(m: AIMessage, a: str, b: str) -> AIMessage:
             return target.upper()  # APPLE -> ORANGE
         elif matched_text.istitle():
             return target.capitalize()  # Apple -> Orange
+        elif matched_text.islower():
+            return target.lower() # apple -> orange
         else:
-            return target.lower()  # apple -> orange
+            return target
     m.content = pattern.sub(replacement_logic, m.content)
     return m
 
 
 def semantic_swap(original_message: AIMessage, entry: ScenarioData) -> AIMessage:
     tampered_ai_msg = original_message.__deepcopy__()
-    A_option = entry["A"].split("#")[0]
-    B_option = entry["B"].split("#")[0]
-    swap(tampered_ai_msg, A_option.capitalize(), B_option.capitalize())
-    swap(tampered_ai_msg, A_option.lower(), B_option.lower())
+    a_option = entry["A"].split("#")[0]
+    b_option = entry["B"].split("#")[0]
+    swap(tampered_ai_msg, a_option, b_option)
     id_a = ["id_x", "id_y", "id_z"][order.index("A")]
     id_b = ["id_x", "id_y", "id_z"][order.index("B")]
     swap(tampered_ai_msg, id_a, id_b)

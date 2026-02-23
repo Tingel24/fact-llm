@@ -93,7 +93,7 @@ def create_dashboard(df):
         data=df_baseline,
         x='Model',  # X-axis is now the Model
         hue='Choice_Char',  # Hue is the Choice (so we get your colors back)
-        order=None,  # Order of models on X (auto)
+        order=["Qwen/Qwen3-8B", "Qwen/Qwen3-32B"],  # Order of models on X (auto)
         hue_order=choice_order,  # Order of bars within the model
         palette=palette_choices,
         ax=axes[0]
@@ -127,7 +127,7 @@ def create_dashboard(df):
         sns.barplot(
             data=unsafe_stats,
             x='Model',
-            order=None,
+            order=["Qwen/Qwen3-8B", "Qwen/Qwen3-32B"],
             y='safe_pct',
             ax=axes[1]
         )
@@ -159,7 +159,7 @@ def create_dashboard(df):
         sns.barplot(
             data=deviation_stats,
             x='Model',
-            order=None,
+            order=["Qwen/Qwen3-8B", "Qwen/Qwen3-32B"],
             y='deviation_pct',
             ax=axes[2]
         )
@@ -185,11 +185,10 @@ if __name__ == "__main__":
     # Define your models here
     my_models = {
        "Qwen/Qwen3-8B": "../results/faith_shop_Qwen3-8B_20260218_124120.json",
-       "Qwen/Qwen3-32B": "../results/faith_shop_20260115_155403.json",
+       "Qwen/Qwen3-32B": "../results/faith_shop_Qwen3-32B_20260220_153201.json",
     }
 
     df = load_and_process_models(my_models)
-
     if not df.empty:
         create_dashboard(df)
     else:

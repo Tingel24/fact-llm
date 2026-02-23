@@ -217,7 +217,7 @@ if __name__ == "__main__":
     # Define models and paths
     my_models = {
         "Qwen/Qwen3-8B": "../results/faith_shop_Qwen3-8B_20260218_124120.json",
-       "Qwen/Qwen3-32B": "../results/faith_shop_20260115_155403.json",
+       "Qwen/Qwen3-32B": "../results/faith_shop_Qwen3-32B_20260220_153201.json",
     }
 
     # Run
