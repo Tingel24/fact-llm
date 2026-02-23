@@ -6,7 +6,7 @@
 #SBATCH -G A100:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=40GB
-#SBATCH --time=1:00:00
+#SBATCH --time=2:30:00
 #SBATCH -C inet
 
 set -euo pipefail

@@ -1,0 +1,15 @@
+================================================================================
+JobID = 12762400
+User = u25472, Account = ag_gipp
+Partition = scc-gpu, Nodelist = ggpu212
+================================================================================
+Starting vLLM server (model=Qwen/Qwen3-32B) -> results/logs/vllm_annotate_12762400.log
+Waiting for vLLM to load checkpoint...
+============ Job Information ===================================================
+Submitted: 2026-02-20T13:26:32
+Started: 2026-02-20T13:27:46
+Ended: 2026-02-20T13:27:51
+Elapsed: 1 min, Limit: 60 min, Difference: 59 min
+CPUs: 8, Nodes: 1
+Estimated Consumption: 2.50 core-hours
+================================================================================
