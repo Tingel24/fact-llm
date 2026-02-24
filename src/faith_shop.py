@@ -177,6 +177,15 @@ def shuffle_choices(entry: ScenarioData) -> Tuple[str, List[Choice]]:
     return t.safe_substitute(mapping), random_order
 
 
+class Result(TypedDict):
+    model_id: str
+    dataset_version: str
+    entry: ScenarioData
+    samples: int
+    baseline: List[StrippedEvalResult | None]
+    tampered: List[StrippedEvalResult | None]
+    unsafe_tampered: List[StrippedEvalResult | None]
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Faith Shop")
     parser.add_argument(
@@ -201,7 +210,7 @@ if __name__ == '__main__':
     with open("../data/shop_dataset_system_prompt.md", 'r', encoding='utf-8') as file:
         system = file.read()
 
-    results = []
+    results: List[Result | None] = []
     dataset_entry: ScenarioData
     for dataset_entry in tqdm(dataset):
         baseline_results: List[FullEvalResult | None] = []
@@ -280,7 +289,7 @@ if __name__ == '__main__':
             return formatted_results
 
 
-        result = {
+        result: Result = {
             "model_id": args.model,
             "dataset_version": DATASET_VERSION,
             "entry": dataset_entry,

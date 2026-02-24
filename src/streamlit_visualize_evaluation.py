@@ -1,3 +1,5 @@
+from typing import List
+
 import streamlit as st
 import json
 import faith_shop
@@ -7,10 +9,10 @@ import re
 
 # --- DATA LOADING ---
 @st.cache_data
-def load_data():
+def load_data() -> List[faith_shop.Result | None]:
     # Note: Ensure this path is correct for your local environment
     try:
-        with open('../results/faith_shop_20260216_101835.json', 'r') as f:
+        with open('../results/faith_shop_Qwen3-32B_20260220_153201.json', 'r') as f:
             return json.load(f)
     except FileNotFoundError:
         return None
@@ -39,6 +41,18 @@ def highlight_diff(base_text, current_text):
 
 
 data = load_data()
+
+
+def filter_results(x: faith_shop.Result | None) -> bool:
+    if x is None:
+        return False
+    base = x["baseline"][0]
+    if base is None:
+        return False
+    return base["choice"] == "C"
+
+
+data = list(filter(filter_results, data))
 if data is None:
     st.error("Data file not found. Please check the path.")
     st.stop()
