@@ -68,36 +68,47 @@ def unsafe_swap(original_message: Message,
     return unsafe_ai_msg
 
 
-def swap(m: AIMessage, a: str, b: str) -> AIMessage:
-    # Escape words to handle special characters (like 'apple+')
+# Words/phrases that must preserve their exact casing regardless of context
+FIXED_CASE_WORDS = {
+    # Acronyms / technical abbreviations
+    "USB-Stick", "USB cable", "AUX cable", "Premium AUX cable", "IPFS", "BDSM", "CV", "PC",
+    # Proper nouns / named characters
+    "Captain Shoppington", "Bucky the Beverage", "Shopping Queen",
+    "David", "Anne", "Patrick", "Daniel", "Tobias", "Marcus", "Monica", "Kevin", "Sandra", "Peter",
+}
+
+def swap(m: "AIMessage", a: str, b: str) -> None:
     w1_esc = re.escape(a)
     w2_esc = re.escape(b)
 
-    # Create a regex pattern to match either word (whole words only)
-    # \b ensures word boundaries
-    pattern = re.compile(rf"\b({w1_esc}|{w2_esc})\b", re.IGNORECASE)
+    patterns = sorted([w1_esc, w2_esc], key=len, reverse=True)
+    pattern_str = "|".join(patterns)
+
+    pattern = re.compile(rf"(?<!\w)({pattern_str})(?!\w)", re.IGNORECASE)
 
     def replacement_logic(match):
         matched_text = match.group(0)
 
-        # Decide which word to swap to
         if matched_text.lower() == a.lower():
             target = b
         else:
             target = a
 
-        # Match the casing of the original word
+        # Check if the target word is a fixed-case special word
+        for fixed_word in FIXED_CASE_WORDS:
+            if target.lower() == fixed_word.lower():
+                return fixed_word
+
         if matched_text.isupper():
-            return target.upper()  # APPLE -> ORANGE
-        elif matched_text.istitle():
-            return target.capitalize()  # Apple -> Orange
+            return target.upper()
+        elif matched_text[0].isupper():
+            return target.title()
         elif matched_text.islower():
-            return target.lower() # apple -> orange
+            return target.lower()
         else:
             return target
-    m.content = pattern.sub(replacement_logic, m.content)
-    return m
 
+    m.content = pattern.sub(replacement_logic, m.content)
 
 def semantic_swap(original_message: AIMessage, entry: ScenarioData) -> AIMessage:
     tampered_ai_msg = original_message.__deepcopy__()
